@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ListView x:Name="listView" HorizontalAlignment="Left" Height="368" VerticalAlignment="Top" Width="360" Margin="0,0,-360,-368"/>
+    </RelativePanel>
 </Page>
