@@ -96,12 +96,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ItemTemplate.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Network\HackerNewsNetwork.cs" />
-    <Compile Include="Network\IHackerNewsApi.cs" />
+    <Compile Include="Network\Internal\HackerNewsNetwork.cs" />
+    <Compile Include="Network\Internal\IHackerNewsApi.cs" />
+    <Compile Include="Network\Internal\ItemJson.cs" />
+    <Compile Include="Network\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

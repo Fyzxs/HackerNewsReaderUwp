@@ -21,7 +21,7 @@ namespace HackerNewsUwp.Network
 
         public Task<string> TopStories()
         {
-            var hackerNewsApi = RestService.For<IHackerNewsApi>(HostUrl,
+            IHackerNewsApi hackerNewsApi = RestService.For<IHackerNewsApi>(HostUrl,
                 new RefitSettings() {HttpMessageHandlerFactory = () => _messageHandler });
             return hackerNewsApi.TopStories();
         }

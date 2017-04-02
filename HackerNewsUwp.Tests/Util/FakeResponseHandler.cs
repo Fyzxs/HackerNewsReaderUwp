@@ -48,19 +48,19 @@ namespace HackerNewsUwp.Tests.Util
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
             System.Threading.CancellationToken cancellationToken)
         {
-            foreach (var fakeResponse in _fakeResponses)
+            foreach (Tuple<Uri, HttpResponseMessage, List<KeyValuePair<string, IEnumerable<string>>>, TimeSpan> fakeResponse in _fakeResponses)
             {
                 if (!fakeResponse.Item1.Equals(request.RequestUri)) continue;
 
                 if (!fakeResponse.Item3.Any()) return Task.FromResult(fakeResponse.Item2);
 
-                var hasHeaders = true;
-                foreach (var header in fakeResponse.Item3)
+                bool hasHeaders = true;
+                foreach (KeyValuePair<string, IEnumerable<string>> header in fakeResponse.Item3)
                 {
                     IEnumerable<string> values;
                     if (request.Headers.TryGetValues(header.Key, out values))
                     {
-                        foreach (var value in header.Value)
+                        foreach (string value in header.Value)
                         {
                             // ReSharper disable once PossibleMultipleEnumeration
                             if (!values.Contains(value))
