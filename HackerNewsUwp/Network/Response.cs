@@ -11,15 +11,18 @@ using Refit;
 
 namespace HackerNewsUwp.Network
 {
-    public class Response
+    public class Response<T> where T : class
     {
+        private readonly INetworkAdapter<T> _adapter;
         private HttpStatusCode _statusCode;
         private string _content;
 
-        public Response(HttpResponseMessage rawHttpResponseMessage, ApiException apiException)
+        public Response(HttpResponseMessage rawHttpResponseMessage, INetworkAdapter<T> adapter, ApiException apiException)
         {
+            _adapter = adapter;
             if (rawHttpResponseMessage != null)
             {
+                _adapter = adapter;
                 ParseHttpResponseMessage(rawHttpResponseMessage);
             }
             else if (apiException != null)
@@ -54,9 +57,11 @@ namespace HackerNewsUwp.Network
             return _content;
         }
 
-        public ItemJson Body()
+        public T Body()
         {
-            return _content == null ? null : JsonConvert.DeserializeObject<ItemJson>(_content);
+            if (_content == null) return null;
+
+            return _adapter == null ? JsonConvert.DeserializeObject<T>(_content) : _adapter.FromRawContent(_content);
         }
     }
 }

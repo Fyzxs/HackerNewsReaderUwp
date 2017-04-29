@@ -1,29 +1,38 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using HackerNewsUwp.Network.Internal;
 using Refit;
 
 namespace HackerNewsUwp.Network
 {
-    public class HackerNewsNetwork
+    public class HackerNewsAccess
     {
         private const string HostUrl = "http://blog.quantityandconversion.com";
         private static HttpMessageHandler _messageHandler = null;
 
-        public HackerNewsNetwork(){}
+        public HackerNewsAccess(){}
 
-        public HackerNewsNetwork(HttpMessageHandler messageHandler)
+        public HackerNewsAccess(HttpMessageHandler messageHandler)
         {
-            //should check for debug so it can be taken out in some kinda proguard?
             _messageHandler = messageHandler;
         }
 
 
-        public Task<string> TopStories()
+        public async Task<Response<Items>> TopStories()
         {
             IHackerNewsApi hackerNewsApi = RestService.For<IHackerNewsApi>(HostUrl,
                 new RefitSettings() {HttpMessageHandlerFactory = () => _messageHandler });
-            return hackerNewsApi.TopStories();
+
+            try
+            {
+                return new Response<Items>(await hackerNewsApi.TopStories(), new ItemsAdapter(), null);
+            }
+            catch (ApiException apiException)
+            {
+                return new Response<Items>(null, null, apiException);
+            }
+            
         }
     }
 }

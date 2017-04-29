@@ -20,71 +20,87 @@ namespace HackerNewsUwp.Tests.Network
         [TestMethod]
         public void CtorShouldThrowNullReferenceExceptionGivenNull()
         {
-            Action action = () => new Response(null, null);
+            Action action = () => new Response<ItemId>(null, null, null);
             action.ShouldThrow<NullReferenceException>();
         }
 
         [TestMethod]
         public void StatusCodeShouldProvideHttpResponseMessageStatusCode()
         {
-            new Response(new HttpResponseMessage(HttpStatusCode.OK), null).StatusCode().Should().Be(HttpStatusCode.OK);
-            new Response(new HttpResponseMessage(HttpStatusCode.Unauthorized), null).StatusCode().Should().Be(HttpStatusCode.Unauthorized);
+            new Response<ItemId>(new HttpResponseMessage(HttpStatusCode.OK), null, null).StatusCode().Should().Be(HttpStatusCode.OK);
+            new Response<ItemId>(new HttpResponseMessage(HttpStatusCode.Unauthorized), null, null).StatusCode().Should().Be(HttpStatusCode.Unauthorized);
         }
         [TestMethod]
         public async Task StatusCodeShouldProvideApiExceptionStatusCode()
         {
-            new Response(null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.OK))).StatusCode().Should().Be(HttpStatusCode.OK);
-            new Response(null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.Unauthorized))).StatusCode().Should().Be(HttpStatusCode.Unauthorized);
+            new Response<ItemId>(null, null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.OK))).StatusCode().Should().Be(HttpStatusCode.OK);
+            new Response<ItemId>(null, null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.Unauthorized))).StatusCode().Should().Be(HttpStatusCode.Unauthorized);
         }
 
         [TestMethod]
         public void MessageShouldReturnHttpResponseMessageContent()
         {
-            new Response(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("Values Go Here") }, null).Message().Should().Be("Values Go Here");
+            new Response<ItemId>(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("Values Go Here") }, null, null).Message().Should().Be("Values Go Here");
         }
 
         [TestMethod]
         public async Task MessageShouldReturnApiExceptionContent()
         {
-            new Response(null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("Values Go Here") })).Message().Should().Be("Values Go Here");
+            new Response<ItemId>(null, null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("Values Go Here") })).Message().Should().Be("Values Go Here");
         }
 
         [TestMethod]
         public void MessageShouldReturnNullGivenNoHttpResponseMessageContent()
         {
-            new Response(new HttpResponseMessage(HttpStatusCode.Unauthorized), null).Message().Should().BeNull();
+            new Response<ItemId>(new HttpResponseMessage(HttpStatusCode.Unauthorized), null, null).Message().Should().BeNull();
         }
 
         [TestMethod]
         public async Task MessageShouldReturnNullGivenNoApiExceptionContent()
         {
-            new Response(null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.Unauthorized))).Message().Should().BeNull();
+            new Response<ItemId>(null, null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.Unauthorized))).Message().Should().BeNull();
         }
 
         [TestMethod]
         public void BodyShouldReturnObjectGivenHttpResponseMessageSuccess()
         {
             int memberInfoId = new Random().Next();
-            ItemJson itemJson = new Response(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent($"{{\"id\":{memberInfoId}}}") }, null).Body();
+            ItemId itemId = new Response<ItemId>(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent($"{{\"id\":{memberInfoId}}}") }, null, null).Body();
 
-            itemJson.Id.Should().Be(memberInfoId);
+            itemId.Id.Should().Be(memberInfoId);
         }
 
         [TestMethod]
         public async Task BodyShouldReturnObjectGivenApiExceptionSuccess()
         {
             int memberInfoId = new Random().Next();
-            ItemJson itemJson = new Response(null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent($"{{\"id\":{memberInfoId}}}") })).Body();
+            ItemId itemId = new Response<ItemId>(null, null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent($"{{\"id\":{memberInfoId}}}") })).Body();
 
-            itemJson.Id.Should().Be(memberInfoId);
+            itemId.Id.Should().Be(memberInfoId);
         }
 
         [TestMethod]
         public void BodyShouldSomethingGivenFailure()
         {
-            ItemJson itemJson = new Response(new HttpResponseMessage(HttpStatusCode.Unauthorized), null).Body();
+            ItemId itemId = new Response<ItemId>(new HttpResponseMessage(HttpStatusCode.Unauthorized), null, null).Body();
 
-            itemJson.Should().BeNull();
+            itemId.Should().BeNull();
+        }
+
+        [TestMethod]
+        public void BodyShouldUseCustomAdapterWhenAvailable()
+        {
+            string customized = new Response<string>(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent($"{{\"id\":2}}") }, new CustomizedAdapter(), null).Body();
+
+            customized.Should().Be("Not the Same Value");
+        }
+
+        public class CustomizedAdapter : INetworkAdapter<string>
+        {
+            public string FromRawContent(string rawContent)
+            {
+                return "Not the Same Value";
+            }
         }
 
     }

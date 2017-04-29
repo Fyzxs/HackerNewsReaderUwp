@@ -1,11 +1,12 @@
+using System.Net.Http;
 using System.Threading.Tasks;
 using Refit;
 
-namespace HackerNewsUwp.Network
+namespace HackerNewsUwp.Network.Internal
 {
     public interface IHackerNewsApi
     {
         [Get("/topstories.json")]
-        Task<string> TopStories();
+        Task<HttpResponseMessage> TopStories();
     }
 }

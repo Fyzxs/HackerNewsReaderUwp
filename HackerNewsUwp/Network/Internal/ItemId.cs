@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace HackerNewsUwp.Network.Internal
 {
-    public class ItemJson
+    public class ItemId
     {
         [JsonProperty("id")]
         public long Id;
