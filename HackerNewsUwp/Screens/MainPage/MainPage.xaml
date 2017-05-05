@@ -5,9 +5,7 @@
     xmlns:local="using:HackerNewsUwp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:screens="using:HackerNewsUwp.Screens"
     mc:Ignorable="d">
-
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="368" VerticalAlignment="Top" Width="360" Margin="0,0,-360,-368"/>
-    </RelativePanel>
+    <screens:QgTextBox x:Name="txtTitle" HorizontalAlignment="Left" Height="640" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="360" IsReadOnly="True" PlaceholderText="TITLE GOES HERE"/>
 </Page>
