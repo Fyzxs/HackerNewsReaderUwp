@@ -96,8 +96,8 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Screens\IText.cs" />
-    <Compile Include="Screens\MainPage\MainPage.xaml.cs">
+    <Compile Include="UserControls\IText.cs" />
+    <Compile Include="Screens\MainView\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Network\HackerNewsAccess.cs" />
@@ -108,8 +108,8 @@
     <Compile Include="Network\Items.cs" />
     <Compile Include="Network\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Screens\MainPage\MainPageBridge.cs" />
-    <Compile Include="Screens\QgTextBox.cs" />
+    <Compile Include="Screens\MainView\MainPageBridge.cs" />
+    <Compile Include="UserControls\QgTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -132,7 +132,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Screens\MainPage\MainPage.xaml">
+    <Page Include="Screens\MainView\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

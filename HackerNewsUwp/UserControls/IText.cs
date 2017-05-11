@@ -1,4 +1,4 @@
-namespace HackerNewsUwp.Screens
+namespace HackerNewsUwp.UserControls
 {
     public interface IText
     {
