@@ -12,7 +12,7 @@ namespace HackerNewsUwp.Tests.Network
     [TestClass]
     public class HackerNewsAccessTests
     {
-        private const string HostUrl = "http://blog.quantityandconversion.com";
+        private const string HostUrl = "http://quinngil.com";
 
         [TestMethod]
         public async Task ShouldReturnTaskItems()

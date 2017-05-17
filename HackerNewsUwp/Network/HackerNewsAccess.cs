@@ -8,21 +8,17 @@ namespace HackerNewsUwp.Network
 {
     public class HackerNewsAccess
     {
-        private const string HostUrl = "http://blog.quantityandconversion.com";
-        private static HttpMessageHandler _messageHandler = null;
+        private const string HostUrl = "http://quinngil.com";
+        private static HttpMessageHandler _messageHandler;
 
         public HackerNewsAccess(){}
 
-        public HackerNewsAccess(HttpMessageHandler messageHandler)
-        {
-            _messageHandler = messageHandler;
-        }
-
+        public HackerNewsAccess(HttpMessageHandler messageHandler) => _messageHandler = messageHandler;
 
         public async Task<Response<Items>> TopStories()
         {
             IHackerNewsApi hackerNewsApi = RestService.For<IHackerNewsApi>(HostUrl,
-                new RefitSettings() {HttpMessageHandlerFactory = () => _messageHandler });
+                new RefitSettings {HttpMessageHandlerFactory = () => _messageHandler });
 
             try
             {

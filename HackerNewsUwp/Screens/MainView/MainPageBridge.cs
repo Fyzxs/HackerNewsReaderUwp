@@ -13,21 +13,10 @@ namespace HackerNewsUwp.Screens.MainView
             IText Count();
         }
 
-        public MainPageBridge(IMainPageView mainPageView)
-        {
-            _mainPageView = mainPageView;
-        }
+        public MainPageBridge(IMainPageView mainPageView) => _mainPageView = mainPageView;
 
-        public void DisplayTitle(string title)
-        {
-            IText textBox = _mainPageView.Title();
-            textBox.Text = title;
-        }
-        
-        public void DisplayItems(Items items)
-        {
-            IText item = _mainPageView.Count();
-            item.Text = $"{items.Count()}";
-        }
+        public void DisplayTitle(string title) => _mainPageView.Title().Text = title;
+
+        public void DisplayItems(Items items) => _mainPageView.Count().Text = $"{items.Count()}";
     }
 }

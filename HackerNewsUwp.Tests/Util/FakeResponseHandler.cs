@@ -54,34 +54,40 @@ namespace HackerNewsUwp.Tests.Util
 
                 if (!fakeResponse.Item3.Any()) return Task.FromResult(fakeResponse.Item2);
 
-                bool hasHeaders = true;
-                foreach (KeyValuePair<string, IEnumerable<string>> header in fakeResponse.Item3)
-                {
-                    IEnumerable<string> values;
-                    if (request.Headers.TryGetValues(header.Key, out values))
-                    {
-                        foreach (string value in header.Value)
-                        {
-                            // ReSharper disable once PossibleMultipleEnumeration
-                            if (!values.Contains(value))
-                            {
-                                hasHeaders = false;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        hasHeaders = false;
-                    }
-                }
+                if (HasHeaders(request, fakeResponse)) continue;
 
-                if (!hasHeaders) continue;
                 return fakeResponse.Item4.Equals(TimeSpan.Zero)
                     ? Task.FromResult(fakeResponse.Item2)
                     : Task.FromException<HttpResponseMessage>(new TimeoutException());
             }
 
             return Task.FromResult(new HttpResponseMessage(HttpStatusCode.NotFound) {RequestMessage = request});
+        }
+
+        private static bool HasHeaders(HttpRequestMessage request, Tuple<Uri, HttpResponseMessage, List<KeyValuePair<string, IEnumerable<string>>>, TimeSpan> fakeResponse)
+        {
+            bool hasHeaders = true;
+            foreach (KeyValuePair<string, IEnumerable<string>> header in fakeResponse.Item3)
+            {
+                if (!request.Headers.TryGetValues(header.Key, out IEnumerable<string> values))
+                {
+                    foreach (string value in header.Value)
+                    {
+                        // ReSharper disable once PossibleMultipleEnumeration
+                        if (!values.Contains(value))
+                        {
+                            hasHeaders = false;
+                        }
+                    }
+                }
+                else
+                {
+                    hasHeaders = false;
+                }
+            }
+
+            if (!hasHeaders) return true;
+            return false;
         }
     }
 }
