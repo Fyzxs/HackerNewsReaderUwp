@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
 using HackerNewsUwp.Network;
-using HackerNewsUwp.Screens.MainView;
 
-namespace HackerNewsUwp.Tests.Screens.MainPage {
+namespace HackerNewsUwp.Screens.MainView {
     public class MainPageMediator
     {
         private readonly HackerNewsAccess _hackerNewsAccess;

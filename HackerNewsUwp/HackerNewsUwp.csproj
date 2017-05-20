@@ -96,6 +96,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Screens\MainView\MainPageMediator.cs" />
     <Compile Include="UserControls\IText.cs" />
     <Compile Include="Screens\MainView\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
