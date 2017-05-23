@@ -15,5 +15,10 @@ namespace HackerNewsUwp.Screens.MainView {
 
         private void DisplayItems(Items items) => _mainPageBridge.DisplayItems(items);
         public async Task LoadItems() => DisplayItems((await _hackerNewsAccess.TopStories()).Body());
+
+        public Task LoadItem(int index)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

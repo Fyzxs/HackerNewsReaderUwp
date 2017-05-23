@@ -14,24 +14,30 @@ namespace HackerNewsUwp.Tests.Screens.MainPage
         [TestMethod, TestCategory("unit")]
         public void ShouldSetTextOnTitle()
         {
+            // Arrange
             FakeMainPageView fakeMainPageView = new FakeMainPageView();
 
             MainPageElevator mainPageBridge = new MainPageElevator(fakeMainPageView);
 
+            // Act
             mainPageBridge.DisplayTitle("My Example Text");
 
-            fakeMainPageView.TxtFakeSetText.Text.Should().Be("My Example Text");
+            // Assert
+            fakeMainPageView.TxtTitle.Text.Should().Be("My Example Text");
         }
 
         [TestMethod, TestCategory("unit")]
         public void ShouldDisplayCountOfItems()
         {
+            // Arrange
             FakeMainPageView fakeMainPageView = new FakeMainPageView();
 
             MainPageElevator mainPageBridge = new MainPageElevator(fakeMainPageView);
 
+            // Act 
             mainPageBridge.DisplayItems(new Items(new List<ItemId>{null, null, null}));
 
+            // Assert
             fakeMainPageView.TxtStoryCount.Text.Should().Be("3");
         }
     }
