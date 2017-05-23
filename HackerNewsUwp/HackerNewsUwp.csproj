@@ -96,9 +96,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Network\Internal\ItemIdJson.cs" />
-    <Compile Include="Network\Item.cs" />
     <Compile Include="Network\Internal\ItemAdapter.cs" />
+    <Compile Include="Network\Internal\ItemIdAdapter.cs" />
+    <Compile Include="Network\Internal\ItemIdJson.cs" />
+    <Compile Include="Network\Internal\Title.cs" />
+    <Compile Include="Network\Internal\TitleAdapter.cs" />
+    <Compile Include="Network\Internal\TitleJson.cs" />
+    <Compile Include="Network\Item.cs" />
     <Compile Include="Screens\MainView\MainPageConcierge.cs" />
     <Compile Include="UserControls\ISetText.cs" />
     <Compile Include="Screens\MainView\MainPageView.xaml.cs">

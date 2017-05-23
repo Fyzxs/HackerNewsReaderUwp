@@ -8,7 +8,7 @@ namespace HackerNewsUwp.Tests.Network.Internal
     [TestClass]
     public class ItemsAdapterTests
     {
-        [TestMethod]
+        [TestMethod, TestCategory("unit")]
         public void ShouldCreateItemsCallingToObject()
         {
             // Arrange
@@ -21,7 +21,7 @@ namespace HackerNewsUwp.Tests.Network.Internal
             items.Should().NotBeNull();
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("unit")]
         public void ShouldCreateItem()
         {
             // Arrange
@@ -32,7 +32,6 @@ namespace HackerNewsUwp.Tests.Network.Internal
 
             // Assert
             items.Count().Should().Be(1);
-
         }
     }
 }

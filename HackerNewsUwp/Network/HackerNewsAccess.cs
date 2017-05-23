@@ -21,11 +21,11 @@ namespace HackerNewsUwp.Network
 
             try
             {
-                return new Response<Items>(await hackerNewsApi.TopStories(), new ItemsAdapter(), null);
+                return new Response<Items>(await hackerNewsApi.TopStories(), new ItemsAdapter());
             }
             catch (ApiException apiException)
             {
-                return new Response<Items>(null, null, apiException);
+                return new Response<Items>(apiException);
             }
         }
 
@@ -35,11 +35,11 @@ namespace HackerNewsUwp.Network
 
             try
             {
-                return new Response<Item>(await hackerNewsApi.Item(itemId.IdAsString()), new ItemAdapter(), null);
+                return new Response<Item>(await hackerNewsApi.Item(itemId.IdAsString()), new ItemAdapter());
             }
             catch (ApiException apiException)
             {
-                return new Response<Item>(null, null, apiException);
+                return new Response<Item>(apiException);
             }
         }
     }

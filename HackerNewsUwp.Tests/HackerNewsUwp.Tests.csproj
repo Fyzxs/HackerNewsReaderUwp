@@ -95,8 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Network\HackerNewsAccessTests.cs" />
-    <Compile Include="Network\Internal\ItemIdAdapter.cs" />
+    <Compile Include="Network\Internal\ItemAdapterTests.cs" />
+    <Compile Include="Network\Internal\TitleAdapterTests.cs" />
+    <Compile Include="Network\Internal\ItemIdAdapterTests.cs" />
     <Compile Include="Network\Internal\ItemsAdapterTests.cs" />
+    <Compile Include="Network\Internal\TitleTests.cs" />
+    <Compile Include="Network\ItemIdTests.cs" />
     <Compile Include="Network\ItemsTests.cs" />
     <Compile Include="Network\ItemTests.cs" />
     <Compile Include="Network\ResponseTests.cs" />

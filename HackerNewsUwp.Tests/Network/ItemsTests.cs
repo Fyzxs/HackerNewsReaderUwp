@@ -10,14 +10,14 @@ namespace HackerNewsUwp.Tests.Network
     [TestClass]
     public class ItemsTests
     {
-        [TestMethod]
+        [TestMethod, TestCategory("unit")]
         public void ConstructorThrowsArgumentExceptionGivenNull()
         {
 
             ((Action)(() => new Items(null))).ShouldThrow<ArgumentNullException>();
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("unit")]
         public void CountReturnsCountOfItems()
         {
             int count = new Items(new List<ItemId>()).Count();

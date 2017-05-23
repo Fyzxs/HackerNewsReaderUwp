@@ -13,22 +13,19 @@ namespace HackerNewsUwp.Network
         private HttpStatusCode _statusCode;
         private string _content;
 
-        public Response(HttpResponseMessage rawHttpResponseMessage, INetworkAdapter<T> adapter, ApiException apiException)
+        public Response(HttpResponseMessage rawHttpResponseMessage, INetworkAdapter<T> adapter)
         {
+            if (rawHttpResponseMessage == null) throw new NullReferenceException("raw Response is null");
+
             _adapter = adapter;
-            if (rawHttpResponseMessage != null)
-            {
-                _adapter = adapter;
-                ParseHttpResponseMessage(rawHttpResponseMessage);
-            }
-            else if (apiException != null)
-            {
-                ParseApiException(apiException);
-            }
-            else
-            {
-                throw new NullReferenceException("raw Response is null");
-            }
+            ParseHttpResponseMessage(rawHttpResponseMessage);
+
+        }
+        public Response(ApiException apiException)
+        {
+            if(apiException == null) throw new NullReferenceException("raw Response is null");
+
+            ParseApiException(apiException);
         }
 
         private void ParseApiException(ApiException apiException)

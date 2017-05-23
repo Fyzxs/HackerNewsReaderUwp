@@ -3,11 +3,13 @@ using Newtonsoft.Json;
 
 namespace HackerNewsUwp.Network.Internal
 {
-    internal class ItemAdapter : INetworkAdapter<Item>
+    public class ItemAdapter : INetworkAdapter<Item>
     {
         public Item FromRawContent(string rawContent)
         {
-            throw new NotImplementedException();
+            ItemId itemId = new ItemIdAdapter().FromRawContent(rawContent);
+            Title title = new TitleAdapter().FromRawContent(rawContent);
+            return new Item(itemId: itemId, title: title);
         }
     }
 }

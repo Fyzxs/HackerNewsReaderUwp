@@ -16,7 +16,7 @@ namespace HackerNewsUwp.Tests.Network
     {
         private const string HostUrl = "http://quinngil.com";
 
-        [TestMethod]
+        [TestMethod, TestCategory("unit")]
         public async Task ShouldReturnTaskItems()
         {
             // Arrange
@@ -35,7 +35,7 @@ namespace HackerNewsUwp.Tests.Network
             count.Should().Be(2);
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("unit")]
         public async Task ShouldReturnSpecifiedItem()
         {
             // Arrange
@@ -53,7 +53,6 @@ namespace HackerNewsUwp.Tests.Network
 
             // Act
             item.TitleInto(fakeSetText);
-
 
             // Assert
             fakeSetText.Text.Should().Be("My First TitleInto");

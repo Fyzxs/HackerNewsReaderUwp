@@ -15,7 +15,7 @@ namespace HackerNewsUwp.Tests.Screens.MainPage
     {
         private const string HostUrl = "http://quinngil.com";
         
-        [TestMethod]
+        [TestMethod, TestCategory("unit")]
         public async Task ShouldLoadItemsFromNetwork()
         {
             //Arrange

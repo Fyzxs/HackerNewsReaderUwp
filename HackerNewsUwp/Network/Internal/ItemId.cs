@@ -9,6 +9,6 @@
 
     public partial class ItemId
     {
-        internal string IdAsString() => _id.ToString();
+        public string IdAsString() => _id.ToString();
     }
 }

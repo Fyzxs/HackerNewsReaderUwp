@@ -10,6 +10,9 @@ namespace HackerNewsUwp.Network.Internal
 
         private static IEnumerable<ItemIdJson> ParsedJson(string rawContent) => JsonConvert.DeserializeObject<ItemIdJson[]>(rawContent);
 
-        private static List<ItemId> ItemIdList(IEnumerable<ItemIdJson> result) => result.Select(itemIdJson => new ItemId(id: itemIdJson.Id)).ToList();
+        private static List<ItemId> ItemIdList(IEnumerable<ItemIdJson> result)
+        {
+            return result.Select(itemIdJson => new ItemId(id: itemIdJson.Id)).ToList();
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace HackerNewsUwp.Tests.Screens.MainPage
     public class MainPageElevatorTests
     {
 
-        [TestMethod]
+        [TestMethod, TestCategory("unit")]
         public void ShouldSetTextOnTitle()
         {
             FakeMainPageView fakeMainPageView = new FakeMainPageView();
@@ -23,7 +23,7 @@ namespace HackerNewsUwp.Tests.Screens.MainPage
             fakeMainPageView.TxtFakeSetText.Text.Should().Be("My Example Text");
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory("unit")]
         public void ShouldDisplayCountOfItems()
         {
             FakeMainPageView fakeMainPageView = new FakeMainPageView();
