@@ -1,6 +1,6 @@
 namespace HackerNewsUwp.UserControls
 {
-    public interface IText
+    public interface ISetText
     {
         string Text { set; }
     }

@@ -17,8 +17,7 @@ namespace HackerNewsUwp.Network
 
         public async Task<Response<Items>> TopStories()
         {
-            IHackerNewsApi hackerNewsApi = RestService.For<IHackerNewsApi>(HostUrl,
-                new RefitSettings {HttpMessageHandlerFactory = () => _messageHandler });
+            IHackerNewsApi hackerNewsApi = RestService.For<IHackerNewsApi>(HostUrl, new RefitSettings {HttpMessageHandlerFactory = () => _messageHandler });
 
             try
             {
@@ -28,7 +27,20 @@ namespace HackerNewsUwp.Network
             {
                 return new Response<Items>(null, null, apiException);
             }
-            
+        }
+
+        public async Task<Response<Item>> Item(ItemId itemId)
+        {
+            IHackerNewsApi hackerNewsApi = RestService.For<IHackerNewsApi>(HostUrl, new RefitSettings { HttpMessageHandlerFactory = () => _messageHandler });
+
+            try
+            {
+                return new Response<Item>(await hackerNewsApi.Item(itemId.IdAsString()), new ItemAdapter(), null);
+            }
+            catch (ApiException apiException)
+            {
+                return new Response<Item>(null, null, apiException);
+            }
         }
     }
 }

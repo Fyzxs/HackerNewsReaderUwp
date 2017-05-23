@@ -7,7 +7,7 @@
     xmlns:userControls="using:HackerNewsUwp.UserControls"
     mc:Ignorable="d">
     <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
-        <userControls:QgTextBox x:Name="TxtTitle" Width="232" Height="25" Text="[Story Title]" VerticalAlignment="Top" Canvas.Top="1" Canvas.Left="1" HorizontalAlignment="Left" HorizontalContentAlignment="Left" IsReadOnly="True" PlaceholderText="[Story Title]"/>
+        <userControls:QgSetTextBox x:Name="TxtTitle" Width="232" Height="25" Text="[Story TitleInto]" VerticalAlignment="Top" Canvas.Top="1" Canvas.Left="1" HorizontalAlignment="Left" HorizontalContentAlignment="Left" IsReadOnly="True" PlaceholderText="[Story TitleInto]"/>
     </Canvas>
 
 

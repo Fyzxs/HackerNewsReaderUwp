@@ -1,13 +1,14 @@
 using System;
+using System.Collections.Generic;
 using HackerNewsUwp.Network.Internal;
 
 namespace HackerNewsUwp.Network
 {
     public class Items
     {
-        private readonly ItemId[] _itemIds;
+        private readonly List<ItemId> _itemIds;
 
-        public Items(ItemId[] itemIds)
+        public Items(List<ItemId> itemIds)
         {
             _itemIds = itemIds;
             if (itemIds == null)
@@ -15,9 +16,6 @@ namespace HackerNewsUwp.Network
                 throw new ArgumentNullException();
             }
         }
-        public int Count()
-        {
-            return _itemIds.Length;
-        }
+        public int Count() => _itemIds.Count;
     }
 }

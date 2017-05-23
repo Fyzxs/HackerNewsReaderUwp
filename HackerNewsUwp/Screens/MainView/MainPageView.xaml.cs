@@ -1,5 +1,4 @@
-﻿using Windows.UI.Xaml.Controls;
-using HackerNewsUwp.UserControls;
+﻿using HackerNewsUwp.UserControls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -15,12 +14,12 @@ namespace HackerNewsUwp.Screens.MainView
             this.InitializeComponent();
         }
 
-        IText MainPageElevator.IMainPageView.Title()
+        ISetText MainPageElevator.IMainPageView.Title()
         {
             return TxtTitle;
         }
 
-        public IText Count()
+        public ISetText Count()
         {
             throw new System.NotImplementedException();
         }

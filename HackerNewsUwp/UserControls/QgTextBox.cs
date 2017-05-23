@@ -2,5 +2,5 @@
 
 namespace HackerNewsUwp.UserControls
 {
-    public sealed class QgTextBox : TextBox, IText {}
+    public sealed class QgSetTextBox : TextBox, ISetText {}
 }

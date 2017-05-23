@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FluentAssertions;
 using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
@@ -17,14 +14,13 @@ namespace HackerNewsUwp.Tests.Network
         public void ConstructorThrowsArgumentExceptionGivenNull()
         {
 
-            Action action = () => new Items(null);
-            action.ShouldThrow<ArgumentNullException>();
+            ((Action)(() => new Items(null))).ShouldThrow<ArgumentNullException>();
         }
 
         [TestMethod]
         public void CountReturnsCountOfItems()
         {
-            int count = new Items(new ItemId[0]).Count();
+            int count = new Items(new List<ItemId>()).Count();
             count.Should().Be(0);
         }
     }

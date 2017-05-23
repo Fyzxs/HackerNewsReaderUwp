@@ -2,12 +2,12 @@
 using HackerNewsUwp.Network;
 
 namespace HackerNewsUwp.Screens.MainView {
-    public class MainPageMediator
+    public class MainPageConcierge
     {
         private readonly HackerNewsAccess _hackerNewsAccess;
-        private readonly MainPageBridge _mainPageBridge;
+        private readonly MainPageElevator _mainPageBridge;
         
-        public MainPageMediator(MainPageBridge mainPageBridge, HackerNewsAccess hackerNewsAccess)
+        public MainPageConcierge(MainPageElevator mainPageBridge, HackerNewsAccess hackerNewsAccess)
         {
             _mainPageBridge = mainPageBridge;
             _hackerNewsAccess = hackerNewsAccess;

@@ -8,5 +8,8 @@ namespace HackerNewsUwp.Network.Internal
     {
         [Get("/topstories.json")]
         Task<HttpResponseMessage> TopStories();
+
+        [Get("/item/{itemId}.json")]
+        Task<HttpResponseMessage> Item(string itemId);
     }
 }

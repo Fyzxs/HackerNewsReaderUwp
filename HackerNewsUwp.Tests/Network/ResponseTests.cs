@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using HackerNewsUwp.Network;
@@ -65,7 +62,7 @@ namespace HackerNewsUwp.Tests.Network
         public void BodyShouldReturnObjectGivenHttpResponseMessageSuccess()
         {
             int memberInfoId = new Random().Next();
-            ItemId itemId = new Response<ItemId>(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent($"{{\"id\":{memberInfoId}}}") }, null, null).Body();
+            TestItemId itemId = new Response<TestItemId>(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent($"{{\"id\":{memberInfoId}}}") }, null, null).Body();
 
             itemId.Id.Should().Be(memberInfoId);
         }
@@ -74,7 +71,7 @@ namespace HackerNewsUwp.Tests.Network
         public async Task BodyShouldReturnObjectGivenApiExceptionSuccess()
         {
             int memberInfoId = new Random().Next();
-            ItemId itemId = new Response<ItemId>(null, null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent($"{{\"id\":{memberInfoId}}}") })).Body();
+            TestItemId itemId = new Response<TestItemId>(null, null, await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent($"{{\"id\":{memberInfoId}}}") })).Body();
 
             itemId.Id.Should().Be(memberInfoId);
         }
@@ -101,6 +98,13 @@ namespace HackerNewsUwp.Tests.Network
             {
                 return "Not the Same Value";
             }
+        }
+
+        // ReSharper disable once ClassNeverInstantiated.Local
+        private class TestItemId
+        {
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
+            public long Id { get; set; }
         }
 
     }

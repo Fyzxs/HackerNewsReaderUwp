@@ -3,17 +3,17 @@ using HackerNewsUwp.UserControls;
 
 namespace HackerNewsUwp.Screens.MainView
 {
-    public class MainPageBridge
+    public class MainPageElevator
     {
         private readonly IMainPageView _mainPageView;
 
         public interface IMainPageView
         {
-            IText Title();
-            IText Count();
+            ISetText Title();
+            ISetText Count();
         }
 
-        public MainPageBridge(IMainPageView mainPageView) => _mainPageView = mainPageView;
+        public MainPageElevator(IMainPageView mainPageView) => _mainPageView = mainPageView;
 
         public void DisplayTitle(string title) => _mainPageView.Title().Text = title;
 

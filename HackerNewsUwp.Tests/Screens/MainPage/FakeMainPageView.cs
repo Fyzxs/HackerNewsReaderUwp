@@ -5,15 +5,15 @@ namespace HackerNewsUwp.Tests.Screens.MainPage
 {
     public class FakeMainPageView : MainPageElevator.IMainPageView
     {
-        internal readonly FakeText TxtFakeText = new FakeText();
+        internal readonly FakeText TxtFakeSetText = new FakeText();
         internal readonly FakeText TxtStoryCount = new FakeText();
 
-        public IText Title()
+        public ISetText Title()
         {
-            return TxtFakeText;
+            return TxtFakeSetText;
         }
 
-        public IText Count()
+        public ISetText Count()
         {
             return TxtStoryCount;
 

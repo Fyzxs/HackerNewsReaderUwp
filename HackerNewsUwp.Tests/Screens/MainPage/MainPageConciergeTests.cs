@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using HackerNewsUwp.Network;
-using HackerNewsUwp.Network.Internal;
 using HackerNewsUwp.Screens.MainView;
 using HackerNewsUwp.Tests.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,13 +11,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace HackerNewsUwp.Tests.Screens.MainPage
 {
     [TestClass]
-    public class MainPageMediatorTests
+    public class MainPageConciergeTests
     {
         private const string HostUrl = "http://quinngil.com";
         
         [TestMethod]
         public async Task ShouldLoadItemsFromNetwork()
         {
+            //Arrange
             FakeResponseHandler fakeResponseHandler = new FakeResponseHandler();
             fakeResponseHandler.AddFakeResponse(new Uri($"{HostUrl}/topstories.json"),
                 new HttpResponseMessage(HttpStatusCode.OK)
@@ -28,10 +28,15 @@ namespace HackerNewsUwp.Tests.Screens.MainPage
 
             HackerNewsAccess hackerNewsAccess = new HackerNewsAccess(fakeResponseHandler);
             FakeMainPageView fakeMainPageView = new FakeMainPageView();
-            MainPageBridge mainPageBridge = new MainPageBridge(fakeMainPageView);
-            MainPageMediator mainPageMediator = new MainPageMediator(mainPageBridge, hackerNewsAccess);
-            await mainPageMediator.LoadItems();
+            MainPageElevator mainPageElevator = new MainPageElevator(fakeMainPageView);
+            MainPageConcierge mainPageConcierge = new MainPageConcierge(mainPageElevator, hackerNewsAccess);
+            
+            //Act
+            await mainPageConcierge.LoadItems();
+            
+            //Assert
             fakeMainPageView.TxtStoryCount.Text.Should().Be("3");
         }
+        
     }
 }

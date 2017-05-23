@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-namespace HackerNewsUwp.Network.Internal
+﻿namespace HackerNewsUwp.Network.Internal
 {
-    public class ItemId
+    public partial class ItemId
     {
-        [JsonProperty("id")]
-        public long Id;
+        private readonly long _id;
+        
+        public ItemId(long id) => _id = id;
+    }
+
+    public partial class ItemId
+    {
+        internal string IdAsString() => _id.ToString();
     }
 }
