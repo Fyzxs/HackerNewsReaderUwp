@@ -1,5 +1,4 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
 using HackerNewsUwp.Tests.Screens.MainPage;

@@ -1,24 +1,31 @@
 ﻿using System.Threading.Tasks;
 using HackerNewsUwp.Network;
+using HackerNewsUwp.Network.Internal;
 
 namespace HackerNewsUwp.Screens.MainView {
     public class MainPageConcierge
     {
-        private readonly HackerNewsAccess _hackerNewsAccess;
-        private readonly MainPageElevator _mainPageBridge;
-        
-        public MainPageConcierge(MainPageElevator mainPageBridge, HackerNewsAccess hackerNewsAccess)
+        public interface IElevator
         {
-            _mainPageBridge = mainPageBridge;
+            void DisplayItems(Items items);
+            void DisplayItem(Item body);
+        }
+        private readonly HackerNewsAccess _hackerNewsAccess;
+        private readonly IElevator _elevator;
+        
+        public MainPageConcierge(IElevator elevator, HackerNewsAccess hackerNewsAccess)
+        {
+            _elevator = elevator;
             _hackerNewsAccess = hackerNewsAccess;
         }
 
-        private void DisplayItems(Items items) => _mainPageBridge.DisplayItems(items);
+        private void DisplayItems(Items items) => _elevator.DisplayItems(items);
         public async Task LoadItems() => DisplayItems((await _hackerNewsAccess.TopStories()).Body());
 
-        public Task LoadItem(int index)
+        public async Task LoadItem(ItemId itemId)
         {
-            throw new System.NotImplementedException();
+            Response<Item> response = await _hackerNewsAccess.Item(itemId);
+            _elevator.DisplayItem(response.Body());
         }
     }
 }

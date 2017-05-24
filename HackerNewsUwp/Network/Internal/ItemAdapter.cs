@@ -1,7 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
-
-namespace HackerNewsUwp.Network.Internal
+﻿namespace HackerNewsUwp.Network.Internal
 {
     public class ItemAdapter : INetworkAdapter<Item>
     {

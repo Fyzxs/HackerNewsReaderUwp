@@ -54,17 +54,19 @@ namespace HackerNewsUwp.Tests.Screens.MainPage
             fakeResponseHandler.AddFakeResponse(new Uri($"{HostUrl}/item/1234.json"),
                 new HttpResponseMessage(HttpStatusCode.OK)
                 {
-                    Content = new StringContent(@"{""id"":1234, ""title"":""My First TitleInto""}")
+                    Content = new StringContent(@"{""id"":1234, ""title"":""This is my title""}")
                 });
 
             HackerNewsAccess hackerNewsAccess = new HackerNewsAccess(fakeResponseHandler);
 
             FakeMainPageView fakeMainPageView = new FakeMainPageView();
             MainPageElevator mainPageElevator = new MainPageElevator(fakeMainPageView);
-            MainPageConcierge mainPageConcierge = new MainPageConcierge(mainPageElevator, hackerNewsAccess); 
+            MainPageConcierge mainPageConcierge = new MainPageConcierge(mainPageElevator, hackerNewsAccess);
+
+            await mainPageConcierge.LoadItems();
 
             //Act
-            await mainPageConcierge.LoadItem(0);
+            await mainPageConcierge.LoadItem(new ItemId(1234L));
 
             //Assert
             fakeMainPageView.TxtTitle.Text.Should().Be("This is my title");

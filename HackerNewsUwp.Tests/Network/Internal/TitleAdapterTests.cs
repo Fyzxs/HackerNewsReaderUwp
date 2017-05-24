@@ -2,7 +2,6 @@
 using HackerNewsUwp.Network.Internal;
 using HackerNewsUwp.Tests.Screens.MainPage;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 
 namespace HackerNewsUwp.Tests.Network.Internal
 {

@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using HackerNewsUwp.Network.Internal;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 
 namespace HackerNewsUwp.Tests.Network.Internal
 {
