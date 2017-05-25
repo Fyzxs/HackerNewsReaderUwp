@@ -2,7 +2,7 @@
 using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
 
-namespace HackerNewsUwp.Screens.MainView {
+namespace HackerNewsUwp.Screens.MainPageHotel {
     public class MainPageConcierge
     {
         public interface IElevator

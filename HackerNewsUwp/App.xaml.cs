@@ -4,7 +4,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
-using HackerNewsUwp.Screens.MainView;
+using HackerNewsUwp.Screens.MainPageHotel;
 
 namespace HackerNewsUwp
 {
@@ -43,7 +43,7 @@ namespace HackerNewsUwp
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
-                    //TODO: Load state from previously suspended application
+                    //TODO: ILoadItem state from previously suspended application
                 }
 
                 // Place the frame in the current Window

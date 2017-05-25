@@ -103,9 +103,13 @@
     <Compile Include="Network\Internal\TitleAdapter.cs" />
     <Compile Include="Network\Internal\TitleJson.cs" />
     <Compile Include="Network\Item.cs" />
-    <Compile Include="Screens\MainView\MainPageConcierge.cs" />
+    <Compile Include="Screens\MainPageHotel\ItemHotel\ILoadItem.cs" />
+    <Compile Include="Screens\MainPageHotel\ItemHotel\ItemView.xaml.cs">
+      <DependentUpon>ItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\MainPageHotel\MainPageConcierge.cs" />
     <Compile Include="UserControls\ISetText.cs" />
-    <Compile Include="Screens\MainView\MainPageView.xaml.cs">
+    <Compile Include="Screens\MainPageHotel\MainPageView.xaml.cs">
       <DependentUpon>MainPageView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Network\HackerNewsAccess.cs" />
@@ -116,7 +120,7 @@
     <Compile Include="Network\Items.cs" />
     <Compile Include="Network\Response.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Screens\MainView\MainPageElevator.cs" />
+    <Compile Include="Screens\MainPageHotel\MainPageElevator.cs" />
     <Compile Include="UserControls\QgTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,7 +144,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Screens\MainView\MainPageView.xaml">
+    <Page Include="Screens\MainPageHotel\ItemHotel\ItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Screens\MainPageHotel\MainPageView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using HackerNewsUwp.Network.Internal;
-using HackerNewsUwp.Tests.Screens.MainPage;
+using HackerNewsUwp.Tests.Screens.MainPageHotel;
+using HackerNewsUwp.Tests.Util.Ui;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HackerNewsUwp.Tests.Network.Internal
@@ -21,7 +22,7 @@ namespace HackerNewsUwp.Tests.Network.Internal
 
             // Assert
             title.TitleInto(titleInto);
-            titleInto.Text.Should().Be("My First TitleInto");
+            titleInto.AssertAgainstText(text => text.Should().Be("My First TitleInto"));
         }
     }
 }

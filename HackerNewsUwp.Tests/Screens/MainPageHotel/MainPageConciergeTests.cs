@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
-using HackerNewsUwp.Screens.MainView;
+using HackerNewsUwp.Screens.MainPageHotel;
 using HackerNewsUwp.Tests.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace HackerNewsUwp.Tests.Screens.MainPage
+namespace HackerNewsUwp.Tests.Screens.MainPageHotel
 {
     [TestClass]
     public class MainPageConciergeTests
@@ -36,7 +36,7 @@ namespace HackerNewsUwp.Tests.Screens.MainPage
             await mainPageConcierge.LoadItems();
             
             //Assert
-            fakeMainPageView.TxtStoryCount.Text.Should().Be("3");
+            fakeMainPageView.TxtStoryCount.AssertAgainstText(text => text.Should().Be("3"));
         }
 
 
@@ -69,8 +69,7 @@ namespace HackerNewsUwp.Tests.Screens.MainPage
             await mainPageConcierge.LoadItem(new ItemId(1234L));
 
             //Assert
-            fakeMainPageView.TxtTitle.Text.Should().Be("This is my title");
+            fakeMainPageView.TxtTitle.AssertAgainstText(text => text.Should().Be("This is my title"));
         }
-
     }
 }

@@ -1,7 +1,7 @@
 ﻿using HackerNewsUwp.Network;
 using HackerNewsUwp.UserControls;
 
-namespace HackerNewsUwp.Screens.MainView
+namespace HackerNewsUwp.Screens.MainPageHotel
 {
     public class MainPageElevator :  MainPageConcierge.IElevator
     {

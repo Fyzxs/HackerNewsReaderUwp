@@ -1,7 +1,8 @@
-using HackerNewsUwp.Screens.MainView;
+using HackerNewsUwp.Screens.MainPageHotel;
+using HackerNewsUwp.Tests.Util.Ui;
 using HackerNewsUwp.UserControls;
 
-namespace HackerNewsUwp.Tests.Screens.MainPage
+namespace HackerNewsUwp.Tests.Screens.MainPageHotel
 {
     public class FakeMainPageView : MainPageElevator.IMainPageView
     {

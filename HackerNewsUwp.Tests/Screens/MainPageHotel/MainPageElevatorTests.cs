@@ -2,10 +2,10 @@
 using FluentAssertions;
 using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
-using HackerNewsUwp.Screens.MainView;
+using HackerNewsUwp.Screens.MainPageHotel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace HackerNewsUwp.Tests.Screens.MainPage
+namespace HackerNewsUwp.Tests.Screens.MainPageHotel
 {
     [TestClass]
     public class MainPageElevatorTests
@@ -23,7 +23,7 @@ namespace HackerNewsUwp.Tests.Screens.MainPage
             mainPageBridge.DisplayTitle("My Example Text");
 
             // Assert
-            fakeMainPageView.TxtTitle.Text.Should().Be("My Example Text");
+            fakeMainPageView.TxtTitle.AssertAgainstText(text => text.Should().Be("My Example Text"));
         }
 
         [TestMethod, TestCategory("unit")]
@@ -38,7 +38,7 @@ namespace HackerNewsUwp.Tests.Screens.MainPage
             mainPageBridge.DisplayItems(new Items(new List<ItemId>{null, null, null}));
 
             // Assert
-            fakeMainPageView.TxtStoryCount.Text.Should().Be("3");
+            fakeMainPageView.TxtStoryCount.AssertAgainstText(text => text.Should().Be("3"));
         }
     }
 }

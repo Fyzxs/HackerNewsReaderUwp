@@ -50,7 +50,7 @@ namespace HackerNewsUwp.Tests
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
-                    //TODO: Load state from previously suspended application
+                    //TODO: ILoadItem state from previously suspended application
                 }
 
                 // Place the frame in the current Window
