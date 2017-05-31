@@ -7,7 +7,7 @@ namespace HackerNewsUwp.Network
 {
     public class HackerNewsAccess
     {
-        private const string HostUrl = "http://quinngil.com";
+        public const string HostUrl = "http://quinngil.com";
         private static HttpMessageHandler _messageHandler;
 
         public HackerNewsAccess(){}

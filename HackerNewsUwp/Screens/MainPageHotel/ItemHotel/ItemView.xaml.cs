@@ -3,9 +3,9 @@ using HackerNewsUwp.Network;
 
 namespace HackerNewsUwp.Screens.MainPageHotel.ItemHotel
 {
-    public sealed partial class ItemDisplay : UserControl, ILoadItem
+    public sealed partial class ItemView : UserControl, ILoadItem
     {
-        public ItemDisplay()
+        public ItemView()
         {
             this.InitializeComponent();
         }

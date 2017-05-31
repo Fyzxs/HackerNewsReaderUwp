@@ -1,4 +1,5 @@
-﻿using HackerNewsUwp.UserControls;
+﻿using System.Threading.Tasks;
+using HackerNewsUwp.UserControls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -9,19 +10,22 @@ namespace HackerNewsUwp.Screens.MainPageHotel
     /// </summary>
     public sealed partial class MainPageView : MainPageElevator.IMainPageView
     {
+        private readonly MainPageElevator _mainPageElevator;
+
         public MainPageView()
         {
             this.InitializeComponent();
+            _mainPageElevator = new MainPageElevator(this);
         }
+        
+        ISetText MainPageElevator.IMainPageView.Title() => TxtTitle;
 
-        ISetText MainPageElevator.IMainPageView.Title()
-        {
-            return TxtTitle;
-        }
+        public ISetText Count() => TxtTitle;
 
-        public ISetText Count()
+        private async void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            await Task.Delay(1);
+            _mainPageElevator.ViewLoaded();
         }
     }
 }

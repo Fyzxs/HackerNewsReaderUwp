@@ -11,9 +11,6 @@ namespace HackerNewsUwp.Tests.Screens.MainPageHotel.ItemHotel
         private readonly FakeText _txtTitle = new FakeText();
 
         internal void AssertAgainstTitle(Action<string> assertion) => _txtTitle.AssertAgainstText(assertion);
-        public ISetText Title()
-        {
-            return _txtTitle;
-        }
+        public ISetText Title() => _txtTitle;
     }
 }

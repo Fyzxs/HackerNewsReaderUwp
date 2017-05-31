@@ -104,6 +104,8 @@
     <Compile Include="Network\Internal\TitleJson.cs" />
     <Compile Include="Network\Item.cs" />
     <Compile Include="Screens\MainPageHotel\ItemHotel\ILoadItem.cs" />
+    <Compile Include="Screens\MainPageHotel\ItemHotel\ItemConcierge.cs" />
+    <Compile Include="Screens\MainPageHotel\ItemHotel\ItemElevator.cs" />
     <Compile Include="Screens\MainPageHotel\ItemHotel\ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>
     </Compile>

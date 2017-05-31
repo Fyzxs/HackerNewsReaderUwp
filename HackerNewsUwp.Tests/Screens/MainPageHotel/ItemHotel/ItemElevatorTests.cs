@@ -1,60 +1,39 @@
 ﻿using System;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using FluentAssertions;
+using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
-using HackerNewsUwp.UserControls;
+using HackerNewsUwp.Tests.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HackerNewsUwp.Tests.Screens.MainPageHotel.ItemHotel
 {
     [TestClass]
-    public class ItemElevatorTests
+    public partial class ItemElevatorTests
     {
         [TestMethod, TestCategory("unit")]
-        public void ShouldDisplayTitle()
+        public async Task ShouldDisplayTitleFromNetwork()
         {
             // Arrange
             FakeItemView fakeItemView = new FakeItemView();
             ItemElevator itemElevator = new ItemElevator(fakeItemView);
+            FakeResponseHandler fakeResponseHandler = new FakeResponseHandler();
+            fakeResponseHandler.AddFakeResponse(new Uri($"{HackerNewsAccess.HostUrl}/item/123.json"),
+                new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent(@"{""id"":123, ""title"":""My First TitleInto""}")
+                });
+            new HackerNewsAccess(fakeResponseHandler);
 
             // Act
-            itemElevator.Load(new ItemId(123L));
+            await itemElevator.Load(new ItemId(123L));
 
             // Assert
-            fakeItemView.AssertAgainstTitle(title => title.Should().Be("This Value"));
+            fakeItemView.AssertAgainstTitle(title => title.Should().Be("My First TitleInto"));
         }
 
-        [TestMethod, TestCategory("unit")]
-        public void ShouldFoo()
-        {
-            // Arrange
-            FakeItemView fakeItemView = new FakeItemView();
-            ItemElevator itemElevator = new ItemElevator(fakeItemView);
-
-            // Act
-            //Get from network
-
-            // Assert
-
-        }
-
-        public class ItemElevator
-        {
-            private readonly IItemView _itemView;
-
-            public interface IItemView
-            {
-                ISetText Title();
-            }
-
-            public ItemElevator(IItemView itemView)
-            {
-                _itemView = itemView;
-            }
-
-            public void Load(ItemId itemId)
-            {
-                _itemView.Title().Text = "This Value";
-            }
-        }
     }
+
 }

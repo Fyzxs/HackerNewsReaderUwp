@@ -47,7 +47,8 @@ namespace HackerNewsUwp.Tests.Util
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
             System.Threading.CancellationToken cancellationToken)
         {
-            foreach (Tuple<Uri, HttpResponseMessage, List<KeyValuePair<string, IEnumerable<string>>>, TimeSpan> fakeResponse in _fakeResponses)
+            foreach (Tuple<Uri, HttpResponseMessage, List<KeyValuePair<string, IEnumerable<string>>>, TimeSpan>
+                fakeResponse in _fakeResponses)
             {
                 if (!fakeResponse.Item1.Equals(request.RequestUri)) continue;
 
@@ -60,10 +61,16 @@ namespace HackerNewsUwp.Tests.Util
                     : Task.FromException<HttpResponseMessage>(new TimeoutException());
             }
 
-            return Task.FromResult(new HttpResponseMessage(HttpStatusCode.NotFound) {RequestMessage = request});
+            List<string> handledUrls = _fakeResponses.Aggregate(new List<string>(), (all, item) => {
+                    all.Add(item.Item1.ToString());
+                    return all;
+                });
+
+            throw new Exception($"{request.RequestUri} not matched in {string.Join(",", handledUrls)}");
         }
 
-        private static bool HasHeaders(HttpRequestMessage request, Tuple<Uri, HttpResponseMessage, List<KeyValuePair<string, IEnumerable<string>>>, TimeSpan> fakeResponse)
+        private static bool HasHeaders(HttpRequestMessage request,
+            Tuple<Uri, HttpResponseMessage, List<KeyValuePair<string, IEnumerable<string>>>, TimeSpan> fakeResponse)
         {
             bool hasHeaders = true;
             foreach (KeyValuePair<string, IEnumerable<string>> header in fakeResponse.Item3)
@@ -85,8 +92,7 @@ namespace HackerNewsUwp.Tests.Util
                 }
             }
 
-            if (!hasHeaders) return true;
-            return false;
+            return !hasHeaders;
         }
     }
 }
