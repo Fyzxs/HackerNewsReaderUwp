@@ -7,7 +7,7 @@ namespace HackerNewsUwp.Network
 {
     public class HackerNewsAccess
     {
-        public const string HostUrl = "http://quinngil.com";
+        public const string HostUrl = "https://hacker-news.firebaseio.com/v0/";
         private static HttpMessageHandler _messageHandler;
 
         public HackerNewsAccess(){}

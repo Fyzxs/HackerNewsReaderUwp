@@ -1,7 +1,5 @@
-﻿using System.Threading.Tasks;
-using HackerNewsUwp.Network;
+﻿using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
-using HackerNewsUwp.Screens.MainPageHotel.ItemHotel;
 using HackerNewsUwp.UserControls;
 
 namespace HackerNewsUwp.Screens.MainPageHotel

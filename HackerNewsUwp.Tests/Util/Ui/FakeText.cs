@@ -1,6 +1,4 @@
 using System;
-using FluentAssertions;
-using FluentAssertions.Primitives;
 using HackerNewsUwp.UserControls;
 
 namespace HackerNewsUwp.Tests.Util.Ui

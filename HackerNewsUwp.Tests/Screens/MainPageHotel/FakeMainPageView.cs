@@ -1,6 +1,4 @@
 using HackerNewsUwp.Screens.MainPageHotel;
-using HackerNewsUwp.Screens.MainPageHotel.ItemHotel;
-using HackerNewsUwp.Tests.Screens.MainPageHotel.ItemHotel;
 using HackerNewsUwp.Tests.Util.Ui;
 using HackerNewsUwp.UserControls;
 using ItemElevatorTests = HackerNewsUwp.Tests.Screens.MainPageHotel.ItemHotel.ItemElevatorTests;

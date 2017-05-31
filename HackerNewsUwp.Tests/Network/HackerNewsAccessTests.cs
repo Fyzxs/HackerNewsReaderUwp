@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
-using HackerNewsUwp.Tests.Screens.MainPageHotel;
 using HackerNewsUwp.Tests.Util;
 using HackerNewsUwp.Tests.Util.Ui;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
