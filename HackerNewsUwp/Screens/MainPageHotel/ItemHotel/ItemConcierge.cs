@@ -4,26 +4,22 @@ using HackerNewsUwp.Network.Internal;
 
 namespace HackerNewsUwp.Screens.MainPageHotel.ItemHotel
 {
-    public partial class ItemElevatorTests
+    public class ItemConcierge
     {
-        public class ItemConcierge
+        public interface IItemElevator
         {
-            public interface IItemElevator
-            {
-                void Update(Item item);
-            }
-            private readonly IItemElevator _itemElevator;
-
-            public ItemConcierge(IItemElevator itemElevator) => _itemElevator = itemElevator;
-
-            public async Task Load(ItemId itemId)
-            {
-                Response<Item> response = await new HackerNewsAccess().Item(itemId);
-                Item item = response.Body();
-                _itemElevator.Update(item);
-            }
+            void Update(Item item);
         }
 
-    }
+        private readonly IItemElevator _itemElevator;
 
+        public ItemConcierge(IItemElevator itemElevator) => _itemElevator = itemElevator;
+
+        public async void Load(ItemId itemId)
+        {
+            Response<Item> response = await new HackerNewsAccess().Item(itemId);
+            Item item = response.Body();
+            _itemElevator.Update(item);
+        }
+    }
 }

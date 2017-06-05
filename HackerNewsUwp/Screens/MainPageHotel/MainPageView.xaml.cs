@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using HackerNewsUwp.UserControls;
+﻿using HackerNewsUwp.UserControls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,9 +21,8 @@ namespace HackerNewsUwp.Screens.MainPageHotel
 
         public ISetText Count() => TxtTitle;
 
-        private async void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            await Task.Delay(1);
             _mainPageElevator.ViewLoaded();
         }
     }

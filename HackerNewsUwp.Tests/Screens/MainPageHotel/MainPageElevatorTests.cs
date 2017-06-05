@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using FluentAssertions;
 using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
 using HackerNewsUwp.Screens.MainPageHotel;
+using HackerNewsUwp.Tests.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HackerNewsUwp.Tests.Screens.MainPageHotel
@@ -23,7 +27,7 @@ namespace HackerNewsUwp.Tests.Screens.MainPageHotel
             mainPageElevator.DisplayTitle("My Example Text");
 
             // Assert
-            fakeMainPageView.TxtTitle.AssertAgainstText(text => text.Should().Be("My Example Text"));
+            fakeMainPageView.AssertAgainstTitleText(text => text.Should().Be("My Example Text"));
         }
 
         [TestMethod, TestCategory("unit")]
@@ -42,18 +46,25 @@ namespace HackerNewsUwp.Tests.Screens.MainPageHotel
         }
 
         [TestMethod, TestCategory("unit'")]
-        public void ShouldLoadCountInViewLoaded()
+        public void ShouldLoadTitleFromViewLoaded()
         {
             // Arrange
             FakeMainPageView fakeMainPageView = new FakeMainPageView();
 
             MainPageElevator mainPageElevator = new MainPageElevator(fakeMainPageView);
+            FakeResponseHandler fakeResponseHandler = new FakeResponseHandler();
+            fakeResponseHandler.AddFakeResponse(new Uri($"{HackerNewsAccess.HostUrl}/item/14448404.json"),
+                new HttpResponseMessage(HttpStatusCode.OK)
+                {
+                    Content = new StringContent(@"{""id"":14448404, ""title"":""My First TitleInto""}")
+                });
+            new HackerNewsAccess(fakeResponseHandler);
 
             // Act 
             mainPageElevator.ViewLoaded();
 
             // Assert
-            fakeMainPageView.TxtStoryCount.AssertAgainstText(text => text.Should().Be("3"));
+            fakeMainPageView.AssertAgainstTitleText(txt => txt.Should().Be("My First TitleInto"));
         }
     }
 }

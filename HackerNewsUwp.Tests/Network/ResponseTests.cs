@@ -28,7 +28,7 @@ namespace HackerNewsUwp.Tests.Network
             new Response<ItemId>(new HttpResponseMessage(HttpStatusCode.Unauthorized), null).StatusCode().Should().Be(HttpStatusCode.Unauthorized);
         }
         [TestMethod, TestCategory("unit")]
-        public async Task StatusCodeShouldProvideApiExceptionStatusCode()
+        public async void StatusCodeShouldProvideApiExceptionStatusCode()
         {
             new Response<ItemId>(await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.OK))).StatusCode().Should().Be(HttpStatusCode.OK);
             new Response<ItemId>(await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.Unauthorized))).StatusCode().Should().Be(HttpStatusCode.Unauthorized);
@@ -41,7 +41,7 @@ namespace HackerNewsUwp.Tests.Network
         }
 
         [TestMethod, TestCategory("unit")]
-        public async Task MessageShouldReturnApiExceptionContent()
+        public async void MessageShouldReturnApiExceptionContent()
         {
             new Response<ItemId>(await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("Values Go Here") })).Message().Should().Be("Values Go Here");
         }
@@ -53,7 +53,7 @@ namespace HackerNewsUwp.Tests.Network
         }
 
         [TestMethod, TestCategory("unit")]
-        public async Task MessageShouldReturnNullGivenNoApiExceptionContent()
+        public async void MessageShouldReturnNullGivenNoApiExceptionContent()
         {
             new Response<ItemId>(await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.Unauthorized))).Message().Should().BeNull();
         }
@@ -68,7 +68,7 @@ namespace HackerNewsUwp.Tests.Network
         }
 
         [TestMethod, TestCategory("unit")]
-        public async Task BodyShouldReturnObjectGivenApiExceptionSuccess()
+        public async void BodyShouldReturnObjectGivenApiExceptionSuccess()
         {
             int memberInfoId = new Random().Next();
             TestItemId itemId = new Response<TestItemId>(await ApiException.Create(null, null, new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent($"{{\"id\":{memberInfoId}}}") })).Body();

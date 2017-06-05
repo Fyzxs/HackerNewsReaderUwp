@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using FluentAssertions;
 using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
+using HackerNewsUwp.Screens.MainPageHotel.ItemHotel;
 using HackerNewsUwp.Tests.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HackerNewsUwp.Tests.Screens.MainPageHotel.ItemHotel
 {
     [TestClass]
-    public partial class ItemElevatorTests
+    public class ItemElevatorTests
     {
         [TestMethod, TestCategory("unit")]
-        public async Task ShouldDisplayTitleFromNetwork()
+        public void ShouldDisplayTitleFromNetwork()
         {
             // Arrange
             FakeItemView fakeItemView = new FakeItemView();
@@ -28,12 +28,11 @@ namespace HackerNewsUwp.Tests.Screens.MainPageHotel.ItemHotel
             new HackerNewsAccess(fakeResponseHandler);
 
             // Act
-            await itemElevator.Load(new ItemId(123L));
+            itemElevator.Load(new ItemId(123L));
 
             // Assert
             fakeItemView.AssertAgainstTitle(title => title.Should().Be("My First TitleInto"));
         }
 
     }
-
 }

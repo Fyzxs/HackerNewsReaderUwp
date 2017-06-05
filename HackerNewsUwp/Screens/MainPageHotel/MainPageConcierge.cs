@@ -20,7 +20,7 @@ namespace HackerNewsUwp.Screens.MainPageHotel {
         }
 
         private void DisplayItems(Items items) => _elevator.DisplayItems(items);
-        public async Task LoadItems() => DisplayItems((await _hackerNewsAccess.TopStories()).Body());
+        public async void LoadItems() => DisplayItems((await _hackerNewsAccess.TopStories()).Body());
 
         public async Task LoadItem(ItemId itemId)
         {

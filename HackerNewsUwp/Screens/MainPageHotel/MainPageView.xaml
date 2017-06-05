@@ -8,9 +8,8 @@
     x:Class="HackerNewsUwp.Screens.MainPageHotel.MainPageView"
     mc:Ignorable="d" Loaded="Page_Loaded">
     <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
-        <userControls:QgSetTextBox x:Name="TxtTitle" Width="232" Height="25" Text="[Story TitleInto]" VerticalAlignment="Top" Canvas.Top="1" Canvas.Left="1" HorizontalAlignment="Left" HorizontalContentAlignment="Left" IsReadOnly="True" PlaceholderText="[Story TitleInto]"/>
-
-        <ItemHotel:ItemView Height="100" Canvas.Left="26" Canvas.Top="77" Width="260"/>
+        <userControls:QgSetTextBox x:Name="TxtTitle" Canvas.Left="5" Canvas.Top="176"></userControls:QgSetTextBox>
+        <ItemHotel:ItemView Height="100" Canvas.Left="5" Canvas.Top="25" Width="292"/>
 
     </Canvas>
 

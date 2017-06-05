@@ -106,8 +106,6 @@
     <Compile Include="Network\ResponseTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screens\MainPageHotel\FakeMainPageView.cs" />
-    <Compile Include="Screens\MainPageHotel\ItemHotel\ItemConcierge.cs" />
-    <Compile Include="Screens\MainPageHotel\ItemHotel\ItemElevator.cs" />
     <Compile Include="Util\Ui\FakeText.cs" />
     <Compile Include="Screens\MainPageHotel\ItemHotel\FakeItemView.cs" />
     <Compile Include="Screens\MainPageHotel\ItemHotel\ItemElevatorTests.cs" />

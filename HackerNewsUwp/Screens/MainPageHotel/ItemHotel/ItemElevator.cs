@@ -5,8 +5,6 @@ using HackerNewsUwp.UserControls;
 
 namespace HackerNewsUwp.Screens.MainPageHotel.ItemHotel
 {
-    public partial class ItemElevatorTests
-    {
         public class ItemElevator : ItemConcierge.IItemElevator
         {
             public interface IItemView
@@ -24,9 +22,9 @@ namespace HackerNewsUwp.Screens.MainPageHotel.ItemHotel
                 _concierge = new ItemConcierge(this);
             }
 
-            public async Task Load(ItemId itemId)
+            public void Load(ItemId itemId)
             {
-                await _concierge.Load(itemId);
+                _concierge.Load(itemId);
             }
 
             public void Update(Item item)
@@ -34,7 +32,4 @@ namespace HackerNewsUwp.Screens.MainPageHotel.ItemHotel
                 item.TitleInto(_itemView.Title());
             }
         }
-
-    }
-
 }
