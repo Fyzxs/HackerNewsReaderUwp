@@ -14,14 +14,12 @@ namespace HackerNewsUwp.Tests.Network
     [TestClass]
     public class HackerNewsAccessTests
     {
-        private const string HostUrl = "http://quinngil.com";
-
         [TestMethod, TestCategory("unit")]
         public async Task ShouldReturnTaskItems()
         {
             // Arrange
             FakeResponseHandler fakeResponseHandler = new FakeResponseHandler();
-            fakeResponseHandler.AddFakeResponse(new Uri($"{HostUrl}/topstories.json"),
+            fakeResponseHandler.AddFakeResponse(new Uri($"{HackerNewsAccess.HostUrl}/topstories.json"),
                 new HttpResponseMessage(HttpStatusCode.OK)
                 {
                     Content = new StringContent(@"[{""id"":123},{""id"":1234}]")
@@ -41,7 +39,7 @@ namespace HackerNewsUwp.Tests.Network
             // Arrange
             FakeResponseHandler fakeResponseHandler = new FakeResponseHandler();
             ItemId itemId = new ItemId(123L);
-            fakeResponseHandler.AddFakeResponse(new Uri($"{HostUrl}/item/123.json"),
+            fakeResponseHandler.AddFakeResponse(new Uri($"{HackerNewsAccess.HostUrl}/item/123.json"),
                 new HttpResponseMessage(HttpStatusCode.OK)
                 {
                     Content = new StringContent(@"{""id"":123, ""title"":""My First TitleInto""}")

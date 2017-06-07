@@ -96,11 +96,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Network\Internal\Author.cs" />
     <Compile Include="Network\Internal\ItemAdapter.cs" />
     <Compile Include="Network\Internal\ItemIdAdapter.cs" />
     <Compile Include="Network\Internal\ItemIdJson.cs" />
     <Compile Include="Network\Internal\Title.cs" />
+    <Compile Include="Network\Internal\AuthorAdapter.cs" />
     <Compile Include="Network\Internal\TitleAdapter.cs" />
+    <Compile Include="Network\Internal\AuthorJson.cs" />
     <Compile Include="Network\Internal\TitleJson.cs" />
     <Compile Include="Network\Item.cs" />
     <Compile Include="Screens\MainPageHotel\ItemHotel\ILoadItem.cs" />
@@ -153,6 +156,10 @@
     <Page Include="Screens\MainPageHotel\MainPageView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Screens\TopStoriesHotel\TopStoriesRoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>

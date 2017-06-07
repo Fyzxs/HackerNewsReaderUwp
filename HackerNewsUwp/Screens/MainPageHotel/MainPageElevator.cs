@@ -1,4 +1,5 @@
-﻿using HackerNewsUwp.Network;
+﻿using System;
+using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
 using HackerNewsUwp.UserControls;
 
@@ -12,7 +13,6 @@ namespace HackerNewsUwp.Screens.MainPageHotel
         public interface IMainPageView
         {
             ISetText Title();
-            ISetText Count();
         }
         
         public MainPageElevator(IMainPageView mainPageView, MainPageConcierge mainPageConcierge = null)
@@ -22,9 +22,15 @@ namespace HackerNewsUwp.Screens.MainPageHotel
         }
         public void DisplayTitle(string title) => _mainPageView.Title().Text = title;
 
-        public void DisplayItems(Items items) => _mainPageView.Count().Text = $"{items.Count()}";
 
-        public void DisplayItem(Item item) => item.TitleInto(_mainPageView.Title());
+        public void DisplayItem(Item item)
+        {
+            item.TitleInto(_mainPageView.Title());
+        }
+        public void DisplayItems(Items items)
+        {
+            throw new NotImplementedException("Where's the Kaboom? I wanted a big kaboom");
+        }
 
         public async void ViewLoaded()
         {

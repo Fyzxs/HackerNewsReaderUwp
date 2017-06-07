@@ -3,6 +3,7 @@ using FluentAssertions;
 using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
 using HackerNewsUwp.Screens.MainPageHotel;
+using HackerNewsUwp.Tests.Screens.MainPageHotel.ItemHotel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HackerNewsUwp.Tests.Screens.MainPageHotel
@@ -15,45 +16,17 @@ namespace HackerNewsUwp.Tests.Screens.MainPageHotel
         public void ShouldSetTextOnTitle()
         {
             // Arrange
-            FakeMainPageView fakeMainPageView = new FakeMainPageView();
-
+            FakeItemView fakeItemView = new FakeItemView();
+            FakeMainPageView fakeMainPageView = new FakeMainPageView(fakeItemView);
+            Item item = new Item(ItemId.NullItemId, new Title("My Example Text"), Author.NullAuthor);
             MainPageElevator mainPageElevator = new MainPageElevator(fakeMainPageView);
 
             // Act
-            mainPageElevator.DisplayTitle("My Example Text");
+            mainPageElevator.DisplayItem(item);
 
             // Assert
-            fakeMainPageView.TxtTitle.AssertAgainstText(text => text.Should().Be("My Example Text"));
+            fakeItemView.AssertAgainstTitle(text => text.Should().Be("My Example Text"));
         }
 
-        [TestMethod, TestCategory("unit")]
-        public void ShouldDisplayCountOfItems()
-        {
-            // Arrange
-            FakeMainPageView fakeMainPageView = new FakeMainPageView();
-
-            MainPageElevator mainPageElevator = new MainPageElevator(fakeMainPageView);
-
-            // Act 
-            mainPageElevator.DisplayItems(new Items(new List<ItemId>{null, null, null}));
-
-            // Assert
-            fakeMainPageView.TxtStoryCount.AssertAgainstText(text => text.Should().Be("3"));
-        }
-
-        [TestMethod, TestCategory("unit'")]
-        public void ShouldLoadCountInViewLoaded()
-        {
-            // Arrange
-            FakeMainPageView fakeMainPageView = new FakeMainPageView();
-
-            MainPageElevator mainPageElevator = new MainPageElevator(fakeMainPageView);
-
-            // Act 
-            mainPageElevator.ViewLoaded();
-
-            // Assert
-            fakeMainPageView.TxtStoryCount.AssertAgainstText(text => text.Should().Be("3"));
-        }
     }
 }

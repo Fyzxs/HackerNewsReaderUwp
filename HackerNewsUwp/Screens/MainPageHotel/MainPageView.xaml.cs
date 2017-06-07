@@ -20,11 +20,10 @@ namespace HackerNewsUwp.Screens.MainPageHotel
         
         ISetText MainPageElevator.IMainPageView.Title() => TxtTitle;
 
-        public ISetText Count() => TxtTitle;
+        public ItemHotel.ILoadItem ItemControl => IvItem;
 
-        private async void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            await Task.Delay(1);
             _mainPageElevator.ViewLoaded();
         }
     }

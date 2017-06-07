@@ -14,7 +14,7 @@ namespace HackerNewsUwp.Tests.Network {
         public void TitleShouldBeCorrect()
         {
             // Arrange
-            Item item = new Item(new ItemId(123L), new Title("This is my Title"));
+            Item item = new Item(ItemId.NullItemId, new Title("This is my Title"), Author.NullAuthor);
             FakeText fakeText = new FakeText();
 
             // Act

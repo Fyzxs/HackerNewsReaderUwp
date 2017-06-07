@@ -8,7 +8,7 @@ namespace HackerNewsUwp.Tests.Network.Internal
     public class ItemIdAdapterTests
     {
         [TestMethod, TestCategory("unit")]
-        public void AdapterReturnsValidItemId()
+        public void AdapterReturnsValid()
         {
             // Arrange 
             const string rawContent = @"{""id"":123, ""title"":""My First TitleInto""}";

@@ -10,5 +10,6 @@
     public partial class ItemId
     {
         public string IdAsString() => _id.ToString();
+        public static ItemId NullItemId = new ItemId(-1L);
     }
 }

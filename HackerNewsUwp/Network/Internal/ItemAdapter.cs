@@ -6,7 +6,8 @@
         {
             ItemId itemId = new ItemIdAdapter().FromRawContent(rawContent);
             Title title = new TitleAdapter().FromRawContent(rawContent);
-            return new Item(itemId: itemId, title: title);
+            Author author = new AuthorAdapter().FromRawContent(rawContent);
+            return new Item(itemId: itemId, title: title, author: author);
         }
     }
 }

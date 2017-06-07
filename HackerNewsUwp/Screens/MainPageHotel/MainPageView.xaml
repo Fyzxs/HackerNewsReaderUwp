@@ -10,7 +10,7 @@
     <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
         <userControls:QgSetTextBox x:Name="TxtTitle" Width="232" Height="25" Text="[Story TitleInto]" VerticalAlignment="Top" Canvas.Top="1" Canvas.Left="1" HorizontalAlignment="Left" HorizontalContentAlignment="Left" IsReadOnly="True" PlaceholderText="[Story TitleInto]"/>
 
-        <ItemHotel:ItemView Height="100" Canvas.Left="26" Canvas.Top="77" Width="260"/>
+        <ItemHotel:ItemView x:Name="IvItem" Height="100" Canvas.Left="26" Canvas.Top="77" Width="260"/>
 
     </Canvas>
 

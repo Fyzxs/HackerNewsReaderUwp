@@ -9,7 +9,7 @@ namespace HackerNewsUwp.Tests.Network.Internal
     public class TitleAdapterTests
     {
         [TestMethod, TestCategory("unit")]
-        public void AdapterReturnsValidItemId()
+        public void AdapterReturnsValid()
         {
             // Arrange 
             const string rawContent = @"{""id"":123, ""title"":""My First TitleInto""}";
@@ -20,7 +20,7 @@ namespace HackerNewsUwp.Tests.Network.Internal
             Title title = adapter.FromRawContent(rawContent);
 
             // Assert
-            title.TitleInto(titleInto);
+            title.Into(titleInto);
             titleInto.AssertAgainstText(text => text.Should().Be("My First TitleInto"));
         }
     }

@@ -1,4 +1,6 @@
+using System;
 using HackerNewsUwp.Screens.MainPageHotel;
+using HackerNewsUwp.Screens.MainPageHotel.ItemHotel;
 using HackerNewsUwp.Tests.Util.Ui;
 using HackerNewsUwp.UserControls;
 using ItemElevatorTests = HackerNewsUwp.Tests.Screens.MainPageHotel.ItemHotel.ItemElevatorTests;
@@ -7,17 +9,18 @@ namespace HackerNewsUwp.Tests.Screens.MainPageHotel
 {
     public class FakeMainPageView : MainPageElevator.IMainPageView
     {
-        private readonly ItemElevatorTests.ItemElevator.IItemView _ivItemView;
-        internal readonly FakeText TxtTitle = new FakeText();
-        internal readonly FakeText TxtStoryCount = new FakeText();
+        private readonly ItemElevator.IItemView _ivItemView;
+        private readonly FakeText _txtTitle = new FakeText();
 
-        internal FakeMainPageView(ItemElevatorTests.ItemElevator.IItemView ivItemView = null)
+        internal FakeMainPageView(ItemElevator.IItemView ivItemView = null)
         {
             _ivItemView = ivItemView;
         }
 
-        public ISetText Title() => TxtTitle;
+        internal void AssertAgainstTitle(Action<string> assertion) => _txtTitle.AssertAgainstText(assertion);
 
-        public ISetText Count() => TxtStoryCount;
+        public ISetText Title() => _txtTitle;
+
+        public ItemElevator.IItemView ItemView() => _ivItemView;
     }
 }

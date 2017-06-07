@@ -10,10 +10,10 @@ namespace HackerNewsUwp.Tests.Network.Internal
     public class ItemAdapterTests
     {
         [TestMethod, TestCategory("unit")]
-        public void ShouldReturnItem()
+        public void ShouldReturnItemWithTitle()
         {
             // Arrange
-            const string rawContent = @"{""id"":123, ""title"":""Some Text here""}";
+            const string rawContent = @"{""id"":123, ""title"":""Some Text here"", ""author"":""The Author Guy""}";
             ItemAdapter itemAdapter = new ItemAdapter();
             Item item = itemAdapter.FromRawContent(rawContent);
             FakeText title = new FakeText();
@@ -23,6 +23,21 @@ namespace HackerNewsUwp.Tests.Network.Internal
 
             // Assert
             title.AssertAgainstText(text => text.Should().Be("Some Text here"));
+        }
+        [TestMethod, TestCategory("unit")]
+        public void ShouldReturnItemWithAuthor()
+        {
+            // Arrange
+            const string rawContent = @"{""id"":123, ""title"":""Some Text here"", ""author"":""The Author Guy""}";
+            ItemAdapter itemAdapter = new ItemAdapter();
+            Item item = itemAdapter.FromRawContent(rawContent);
+            FakeText fakeText = new FakeText();
+
+            // Act 
+            item.AuthorInto(fakeText);
+
+            // Assert
+            fakeText.AssertAgainstText(text => text.Should().Be("The Author Guy"));
         }
     }
 }

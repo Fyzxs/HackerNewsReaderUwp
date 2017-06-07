@@ -7,8 +7,8 @@ namespace HackerNewsUwp.Screens.MainPageHotel {
     {
         public interface IElevator
         {
-            void DisplayItems(Items items);
             void DisplayItem(Item body);
+            void DisplayItems(Items items);
         }
         private readonly HackerNewsAccess _hackerNewsAccess;
         private readonly IElevator _elevator;
@@ -19,13 +19,8 @@ namespace HackerNewsUwp.Screens.MainPageHotel {
             _hackerNewsAccess = hackerNewsAccess;
         }
 
-        private void DisplayItems(Items items) => _elevator.DisplayItems(items);
-        public async Task LoadItems() => DisplayItems((await _hackerNewsAccess.TopStories()).Body());
+        public async Task LoadItems() => _elevator.DisplayItems((await _hackerNewsAccess.TopStories()).Body());
 
-        public async Task LoadItem(ItemId itemId)
-        {
-            Response<Item> response = await _hackerNewsAccess.Item(itemId);
-            _elevator.DisplayItem(response.Body());
-        }
+        public async Task LoadItem(ItemId itemId) => _elevator.DisplayItem((await _hackerNewsAccess.Item(itemId)).Body());
     }
 }
