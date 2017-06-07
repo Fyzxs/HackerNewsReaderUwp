@@ -13,10 +13,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace HackerNewsUwp.Tests.Screens.MainPageHotel.ItemHotel
 {
     [TestClass]
-    public partial class ItemElevatorTests
+    public class ItemElevatorTests
     {
         [TestMethod, TestCategory("integration")]
-        public async Task ShouldDisplayTitleFromNetwork()
+        public void ShouldDisplayTitleFromNetwork()
         {
             // Arrange
             FakeItemView fakeItemView = new FakeItemView();
@@ -30,14 +30,14 @@ namespace HackerNewsUwp.Tests.Screens.MainPageHotel.ItemHotel
             new HackerNewsAccess(fakeResponseHandler);
 
             // Act
-            await itemElevator.Load(new ItemId(123L));
+            itemElevator.Load(new ItemId(123L));
 
             // Assert
             fakeItemView.AssertAgainstTitle(title => title.Should().Be("My First TitleInto"));
         }
 
         [TestMethod, TestCategory("integration")]
-        public async Task ShouldDisplayAuthorFromNetwork()
+        public void ShouldDisplayAuthorFromNetwork()
         {
             // Arrange
             FakeItemView fakeItemView = new FakeItemView();
@@ -51,7 +51,7 @@ namespace HackerNewsUwp.Tests.Screens.MainPageHotel.ItemHotel
             new HackerNewsAccess(fakeResponseHandler);
              
             // Act
-            await itemElevator.Load(new ItemId(123L));
+            itemElevator.Load(new ItemId(123L));
 
             // Assert
             fakeItemView.AssertAgainstAuthor(txt => txt.Should().Be("Some Guy"));
