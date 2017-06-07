@@ -15,7 +15,7 @@ namespace HackerNewsUwp.Tests.Network
     public class HackerNewsAccessTests
     {
         [TestMethod, TestCategory("unit")]
-        public async Task ShouldReturnTaskItems()
+        public async void ShouldReturnTaskItems()
         {
             // Arrange
             FakeResponseHandler fakeResponseHandler = new FakeResponseHandler();
@@ -34,7 +34,7 @@ namespace HackerNewsUwp.Tests.Network
         }
 
         [TestMethod, TestCategory("unit")]
-        public async Task ShouldReturnSpecifiedItem()
+        public async void ShouldReturnSpecifiedItem()
         {
             // Arrange
             FakeResponseHandler fakeResponseHandler = new FakeResponseHandler();

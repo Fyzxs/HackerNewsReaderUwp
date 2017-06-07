@@ -10,8 +10,8 @@
     d:DesignWidth="400">
 
     <Grid>
-        <userControls:QgSetTextBox x:Name="TxtTitle" Width="390" Height="25" Text="[Story TitleInto]" VerticalAlignment="Top" Canvas.Top="1" Canvas.Left="1" HorizontalAlignment="Left" HorizontalContentAlignment="Left" IsReadOnly="True" PlaceholderText="[Story TitleInto]" IsEnabled="False" IsTabStop="False" IsSpellCheckEnabled="False" IsHitTestVisible="False" IsTextPredictionEnabled="False"/>
-        <userControls:QgSetTextBox x:Name="TxtAuthor" Width="145" Height="25" Text="[Story AuthorInto]" VerticalAlignment="Top" HorizontalAlignment="Left" HorizontalContentAlignment="Left" IsReadOnly="True" PlaceholderText="[Story TitleInto]" Margin="0,37,0,0" IsEnabled="False" IsTabStop="False" IsTextPredictionEnabled="False" IsHitTestVisible="False" IsSpellCheckEnabled="False"/>
+        <userControls:QgSetTextBox x:Name="TxtTitle" Width="232" Height="25" Text="[Item Title]" VerticalAlignment="Top" Canvas.Top="1" Canvas.Left="1" HorizontalAlignment="Left" HorizontalContentAlignment="Left" IsReadOnly="True" PlaceholderText="[Item Title]"/>
+        <userControls:QgSetTextBox x:Name="TxtAuthor" Text="" VerticalAlignment="Top" Canvas.Top="1" Canvas.Left="1" HorizontalContentAlignment="Left" IsReadOnly="True" PlaceholderText="[Item Author]" Margin="0,34,0,0" HorizontalAlignment="Left" Width="232"/>
 
     </Grid>
 </UserControl>
