@@ -1,13 +1,20 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using HackerNewsUwp.Network.Internal;
+﻿using HackerNewsUwp.Network.Internal;
 using Newtonsoft.Json;
 using Refit;
+using System;
+using System.Net;
+using System.Net.Http;
 
 namespace HackerNewsUwp.Network
 {
-    public class Response<T> where T : class
+    public interface IResponse<out T> where T : class
+    {
+        HttpStatusCode StatusCode();
+        string Message();
+        T Body();
+    }
+
+    public class Response<T> : IResponse<T> where T : class
     {
         private readonly INetworkAdapter<T> _adapter;
         private HttpStatusCode _statusCode;
@@ -23,7 +30,7 @@ namespace HackerNewsUwp.Network
         }
         public Response(ApiException apiException)
         {
-            if(apiException == null) throw new NullReferenceException("raw Response is null");
+            if (apiException == null) throw new NullReferenceException("raw Response is null");
 
             ParseApiException(apiException);
         }

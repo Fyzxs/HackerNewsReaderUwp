@@ -16,14 +16,12 @@ namespace HackerNewsUwp.Screens.MainPageHotel
             this.InitializeComponent();
             _mainPageElevator = new MainPageElevator(this);
         }
-        
+
         ISetText MainPageElevator.IMainPageView.Title() => TxtTitle;
-
-        public ItemHotel.ILoadItem ItemControl => IvItem;
-
         private void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             _mainPageElevator.ViewLoaded();
         }
+
     }
 }

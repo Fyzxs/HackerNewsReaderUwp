@@ -4,13 +4,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:userControls="using:HackerNewsUwp.UserControls"
-    xmlns:ItemHotel="using:HackerNewsUwp.Screens.MainPageHotel.ItemHotel"
+    xmlns:ItemHotel="using:HackerNewsUwp.UserControls.ItemHotel"
     x:Class="HackerNewsUwp.Screens.MainPageHotel.MainPageView"
     mc:Ignorable="d" Loaded="Page_Loaded">
     <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
         <userControls:QgSetTextBox x:Name="TxtTitle" Width="232" Height="25" Text="[Story TitleInto]" VerticalAlignment="Top" Canvas.Top="1" Canvas.Left="1" HorizontalAlignment="Left" HorizontalContentAlignment="Left" IsReadOnly="True" PlaceholderText="[Story TitleInto]"/>
 
-        <ItemHotel:ItemView x:Name="IvItem" Height="100" Canvas.Left="26" Canvas.Top="77" Width="260"/>
+
+
+        <ItemHotel:ItemRoom x:Name="Item" Canvas.Left="1" Canvas.Top="121" Width="392" />
+
+
 
     </Canvas>
 

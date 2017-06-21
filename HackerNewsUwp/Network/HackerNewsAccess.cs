@@ -1,22 +1,28 @@
-using System.Net.Http;
-using System.Threading.Tasks;
 using HackerNewsUwp.Network.Internal;
 using Refit;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace HackerNewsUwp.Network
 {
-    public class HackerNewsAccess
+    public interface IHackerNewsAccess
+    {
+        Task<IResponse<Items>> TopStories();
+        Task<IResponse<Item>> Item(ItemId itemId);
+    }
+
+    public class HackerNewsAccess : IHackerNewsAccess
     {
         public const string HostUrl = "https://hacker-news.firebaseio.com/v0/";
         private static HttpMessageHandler _messageHandler;
 
-        public HackerNewsAccess(){}
+        public HackerNewsAccess() { }
 
         public HackerNewsAccess(HttpMessageHandler messageHandler) => _messageHandler = messageHandler;
 
-        public async Task<Response<Items>> TopStories()
+        public async Task<IResponse<Items>> TopStories()
         {
-            IHackerNewsApi hackerNewsApi = RestService.For<IHackerNewsApi>(HostUrl, new RefitSettings {HttpMessageHandlerFactory = () => _messageHandler });
+            IHackerNewsApi hackerNewsApi = RestService.For<IHackerNewsApi>(HostUrl, new RefitSettings { HttpMessageHandlerFactory = () => _messageHandler });
 
             try
             {
@@ -28,7 +34,7 @@ namespace HackerNewsUwp.Network
             }
         }
 
-        public async Task<Response<Item>> Item(ItemId itemId)
+        public async Task<IResponse<Item>> Item(ItemId itemId)
         {
             IHackerNewsApi hackerNewsApi = RestService.For<IHackerNewsApi>(HostUrl, new RefitSettings { HttpMessageHandlerFactory = () => _messageHandler });
 

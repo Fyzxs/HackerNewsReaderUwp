@@ -1,13 +1,12 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
 using HackerNewsUwp.Tests.Util;
 using HackerNewsUwp.Tests.Util.Ui;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Net;
+using System.Net.Http;
 
 namespace HackerNewsUwp.Tests.Network
 {
@@ -24,7 +23,7 @@ namespace HackerNewsUwp.Tests.Network
                 {
                     Content = new StringContent(@"[{""id"":123},{""id"":1234}]")
                 });
-            Response<Items> response = await new HackerNewsAccess(fakeResponseHandler).TopStories();
+            IResponse<Items> response = await new HackerNewsAccess(fakeResponseHandler).TopStories();
 
             // Act
             int count = response.Body().Count();
@@ -44,7 +43,7 @@ namespace HackerNewsUwp.Tests.Network
                 {
                     Content = new StringContent(@"{""id"":123, ""title"":""My First TitleInto""}")
                 });
-            Response<Item> response = await new HackerNewsAccess(fakeResponseHandler).Item(itemId);
+            IResponse<Item> response = await new HackerNewsAccess(fakeResponseHandler).Item(itemId);
 
             Item item = response.Body();
             FakeText fakeSetText = new FakeText();

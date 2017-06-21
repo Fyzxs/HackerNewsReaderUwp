@@ -4,7 +4,7 @@ namespace HackerNewsUwp.Network.Internal
 {
     internal class AuthorJson
     {
-        [JsonProperty("author")]
+        [JsonProperty("by")]
         public string Author { get; set; }
     }
 }
