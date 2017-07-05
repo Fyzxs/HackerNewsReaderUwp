@@ -1,4 +1,6 @@
-﻿using HackerNewsUwp.UserControls;
+﻿using Windows.UI.Xaml.Controls;
+using HackerNewsUwp.Network;
+using HackerNewsUwp.UserControls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -20,8 +22,7 @@ namespace HackerNewsUwp.Screens.MainPageHotel
         ISetText MainPageElevator.IMainPageView.Title() => TxtTitle;
         private void Page_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            _mainPageElevator.ViewLoaded();
+                _mainPageElevator.ViewLoaded();
         }
-
     }
 }

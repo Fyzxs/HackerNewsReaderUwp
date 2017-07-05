@@ -1,19 +1,13 @@
 ﻿<UserControl
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:HackerNewsUwp.UserControls.ItemHotel"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:UserControls="using:HackerNewsUwp.UserControls"
-    x:Class="HackerNewsUwp.UserControls.ItemHotel.ItemRoom"
-    mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
+    xmlns:userControls="using:HackerNewsUwp.UserControls"
+    x:Class="HackerNewsUwp.UserControls.ItemHotel.ItemRoom">
 
     <Grid Loaded="Grid_Loaded">
 
-        <UserControls:QgSetTextBox x:Name="TxtTitle" Margin="0,0,10,258" TextWrapping="Wrap" Text="Title Box" HorizontalAlignment="Right" Width="380" Height="32" VerticalAlignment="Bottom" IsEnabled="False"/>
-        <UserControls:QgSetTextBox x:Name="TxtAuthor" Margin="0,0,10,221" TextWrapping="Wrap" Text="Author Box" HorizontalAlignment="Right" Width="380" Height="32" VerticalAlignment="Bottom" IsEnabled="False"/>
+        <userControls:QgSetTextBox x:Name="TxtTitle" Margin="0,0,10,0" TextWrapping="NoWrap" Text="Title Box" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False"/>
+        <userControls:QgSetTextBox x:Name="TxtAuthor" Margin="0,32,10,10" TextWrapping="NoWrap" Text="Author Box" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False"/>
 
     </Grid>
 </UserControl>

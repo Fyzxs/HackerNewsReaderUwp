@@ -8,11 +8,8 @@ namespace HackerNewsUwp.Network.Internal
     {
         public Items FromRawContent(string rawContent) => new Items(ItemIdList(ParsedJson(rawContent)));
 
-        private static IEnumerable<ItemIdJson> ParsedJson(string rawContent) => JsonConvert.DeserializeObject<ItemIdJson[]>(rawContent);
+        private static IEnumerable<ItemIdJson> ParsedJson(string rawContent) => JsonConvert.DeserializeObject<long[]>(rawContent).Select(id => new ItemIdJson() { Id = id}).ToList();
 
-        private static List<ItemId> ItemIdList(IEnumerable<ItemIdJson> result)
-        {
-            return result.Select(itemIdJson => new ItemId(id: itemIdJson.Id)).ToList();
-        }
+        private static List<ItemId> ItemIdList(IEnumerable<ItemIdJson> result) => result.Select(itemIdJson => new ItemId(id: itemIdJson.Id)).ToList();
     }
 }

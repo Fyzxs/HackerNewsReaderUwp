@@ -125,6 +125,9 @@
     <Compile Include="UserControls\ItemHotel\ItemRoom.xaml.cs">
       <DependentUpon>ItemRoom.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ItemListHotel\ItemListRoom.xaml.cs">
+      <DependentUpon>ItemListRoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\QgTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -160,10 +163,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ItemListHotel\ItemListRoom.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserControls\ItemListHotel\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

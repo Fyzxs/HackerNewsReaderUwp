@@ -1,32 +1,33 @@
-﻿// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
-
-using HackerNewsUwp.Network;
+﻿using HackerNewsUwp.Network;
 using HackerNewsUwp.Network.Internal;
+using System;
 
 namespace HackerNewsUwp.UserControls.ItemHotel
 {
-    public sealed partial class ItemRoom : ItemElevator.IRoom
+    public sealed partial class ItemRoom : ItemElevator.IRoom, Items.IItemIdConsumer
     {
+        private ItemId _itemId;
+
         public ItemRoom()
         {
             InitializeComponent();
         }
 
+        public ISetText Title() => TxtTitle;
 
-        public ISetText Title()
-        {
-            return TxtTitle;
-        }
-
-        public ISetText Author()
-        {
-            return TxtAuthor;
-        }
+        public ISetText Author() => TxtAuthor;
 
         private void Grid_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            ItemElevator elevator = new ItemElevator(new ItemId(8863), new ItemConcierge(), new HackerNewsAccess());
+            if (_itemId == null) { throw new InvalidOperationException("ItemId must be set before grid load"); };
+            ItemElevator elevator = new ItemElevator(_itemId, new ItemConcierge(), new HackerNewsAccess());
             elevator.Load(this);
+        }
+
+        public void ConsumeItemId(ItemId itemId)
+        {
+            if (_itemId != null) { throw new InvalidOperationException("ItemId is Immutable"); }
+            _itemId = itemId;
         }
     }
 }
