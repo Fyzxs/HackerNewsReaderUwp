@@ -6,7 +6,10 @@ namespace HackerNewsUwp.Network.Internal
     {
         public Author FromRawContent(string rawContent)
         {
-            return new Author(JsonConvert.DeserializeObject<AuthorJson>(rawContent).Author);
+            string rawAuthor = JsonConvert.DeserializeObject<AuthorJson>(rawContent).Author;
+            return rawAuthor == null
+                ? Author.NullAuthor
+                : new Author(rawAuthor);
         }
     }
 }

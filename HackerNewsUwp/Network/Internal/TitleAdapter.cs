@@ -6,7 +6,10 @@ namespace HackerNewsUwp.Network.Internal
     {
         public Title FromRawContent(string rawContent)
         {
-            return new Title(JsonConvert.DeserializeObject<TitleJson>(rawContent).Title);
+            string rawString = JsonConvert.DeserializeObject<TitleJson>(rawContent).Title;
+            return rawString == null
+                ? Title.NullTitle
+                : new Title(rawString);
         }
     }
 }

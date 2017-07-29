@@ -13,7 +13,7 @@ namespace HackerNewsUwp.Tests.Network.Internal
         public void ShouldReturnItemWithTitle()
         {
             // Arrange
-            const string rawContent = @"{""id"":123, ""title"":""Some Text here"", ""author"":""The Author Guy""}";
+            const string rawContent = @"{""id"":123, ""title"":""Some Text here"", ""by"":""The Author Guy""}";
             ItemAdapter itemAdapter = new ItemAdapter();
             Item item = itemAdapter.FromRawContent(rawContent);
             FakeText title = new FakeText();
@@ -28,7 +28,7 @@ namespace HackerNewsUwp.Tests.Network.Internal
         public void ShouldReturnItemWithAuthor()
         {
             // Arrange
-            const string rawContent = @"{""id"":123, ""title"":""Some Text here"", ""author"":""The Author Guy""}";
+            const string rawContent = @"{""id"":123, ""title"":""Some Text here"", ""by"":""The Author Guy""}";
             ItemAdapter itemAdapter = new ItemAdapter();
             Item item = itemAdapter.FromRawContent(rawContent);
             FakeText fakeText = new FakeText();

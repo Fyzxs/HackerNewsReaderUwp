@@ -6,7 +6,10 @@ namespace HackerNewsUwp.Network.Internal
     {
         public ItemId FromRawContent(string rawContent)
         {
-            return new ItemId(JsonConvert.DeserializeObject<ItemIdJson>(rawContent).Id);
+            long? rawItemId = JsonConvert.DeserializeObject<ItemIdJson>(rawContent).Id;
+            return rawItemId.HasValue
+                ? new ItemId(rawItemId.Value)
+                : ItemId.NullItemId;
         }
     }
 }

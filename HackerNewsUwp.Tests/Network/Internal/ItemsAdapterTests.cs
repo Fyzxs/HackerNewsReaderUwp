@@ -25,7 +25,7 @@ namespace HackerNewsUwp.Tests.Network.Internal
         public void ShouldCreateItem()
         {
             // Arrange
-            const string rawContent = @"[{""id"":123}]";
+            const string rawContent = @"[123]";
 
             // Act
             Items items = new ItemsAdapter().FromRawContent(rawContent);

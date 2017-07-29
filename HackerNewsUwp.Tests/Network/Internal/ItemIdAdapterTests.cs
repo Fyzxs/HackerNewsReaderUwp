@@ -8,7 +8,7 @@ namespace HackerNewsUwp.Tests.Network.Internal
     public class ItemIdAdapterTests
     {
         [TestMethod, TestCategory("unit")]
-        public void AdapterReturnsValid()
+        public void AdapterReturnsValidItemId()
         {
             // Arrange 
             const string rawContent = @"{""id"":123, ""title"":""My First TitleInto""}";
@@ -20,6 +20,20 @@ namespace HackerNewsUwp.Tests.Network.Internal
             // Assert
 
             itemId.IdAsString().Should().Be("123");
+        }
+        [TestMethod, TestCategory("unit")]
+        public void AdapterReturnsNullObjectForMissingItemId()
+        {
+            // Arrange 
+            const string rawContent = @"{""id"":123, ""title"":""My First TitleInto""}";
+            ItemIdAdapter adapter = new ItemIdAdapter();
+
+            // Act
+            ItemId itemId = adapter.FromRawContent(rawContent);
+
+            // Assert
+
+            itemId.Should().BeSameAs(ItemId.NullItemId);
         }
     }
 }
