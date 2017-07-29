@@ -97,6 +97,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Network\Internal\Author.cs" />
+    <Compile Include="Network\Internal\IHackerNewsApi2.cs" />
     <Compile Include="Network\Internal\ItemAdapter.cs" />
     <Compile Include="Network\Internal\ItemIdAdapter.cs" />
     <Compile Include="Network\Internal\ItemIdJson.cs" />
